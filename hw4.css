@@ -81,6 +81,10 @@ footer {
     margin-right: 10px;
 }
 
+.address-box {
+    text-align: right;
+}
+
 label {
     text-align: right;
     font-family: "optima", sans-serif;
