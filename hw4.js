@@ -295,11 +295,11 @@ function confirmPass() {
 
     if (pass1 !== pass2){
         document.getElementById("pass2-error").innerHTML =
-        "Password do not match";
+        "Passwords do not match";
         return false;
     } else {
         document.getElementById("pass2-error").innerHTML =
-        "Password match";
+        "Passwords match";
         return true;
     }
 }
@@ -433,7 +433,7 @@ function validateEverything() {
     document.cookie = name + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-//Retrieve the value of a cookie by its name
+//Retrieves the value of a cookie by its name
 function getCookie(name) {
     var cookieName = name + "=";
     var cookies = document.cookie.split(';');
@@ -447,12 +447,12 @@ function getCookie(name) {
     return "";
 }
 
-var input = [
+var inputs = [
     {id:"fname", cookieName: "firstName"},
-    {id:"mname", cookieName: "middleInital"},
+    {id:"mname", cookieName: "middleInitial"},
     {id:"lname", cookieName: "lastName"},
     {id:"dob", cookieName: "dateOfBirth"},
-    {id:"ssn", cookieName: "socialSecuirtyNumber"},
+    {id:"ssn", cookieName: "socialSecurityNumber"},
     {id:"address1", cookieName: "address1"},
     {id:"city", cookieName: "city"},
     {id:"zcode", cookieName: "zipCode"},
@@ -476,7 +476,7 @@ inputs.forEach(function (input) {
     });
 });
 
-//greet the user their name and message if cookie is set
+//Greet the user their name and message if cookie is set
 var firstName = getCookie("firstName");
 if (firstName !== "") {
     document.getElementById("welcome1").innerHTML = "Welcome back, " + firstName + "!<br>";
@@ -484,7 +484,7 @@ if (firstName !== "") {
         "<a href='#' id='new-user'>Not " + firstName + "? Click here to start a new form.</a>";
 
     document.getElementById("new-user").addEventListener("click", function () {
-        inputs.forEach(function (input) {
+        input.forEach(function (input) {
             setCookie(input.cookieName, "", -1);
         });
         location.reload();
@@ -501,7 +501,7 @@ document.getElementById("remember-me").addEventListener("change", function () {
         console.log("All cookies deleted because 'Remember Me' is unchecked.");
     } else {
         // If "Remember Me" is checked or rechecked, save cookies
-        inputs.forEach(function (input) {
+        input.forEach(function (input) {
             const inputElement = document.getElementById(input.id);
             if (inputElement.value.trim() !== "") {
                 setCookie(input.cookieName, inputElement.value, 30);
@@ -511,7 +511,7 @@ document.getElementById("remember-me").addEventListener("change", function () {
     }
 });
 
-//removes all stored cookies by setting their expiriation date in the past
+//removes all stored cookies by setting their expiration date in the past
 function deleteAllCookies() {
     document.cookie.split(";").forEach(function (cookie) {
         let eqPos = cookie.indexOf("=");
