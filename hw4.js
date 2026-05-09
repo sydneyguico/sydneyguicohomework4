@@ -425,7 +425,7 @@ function validateEverything() {
      }
  }
 
- //when the cookies expires, this tell you how long it will expire:
+ //when the cookies expire, this tells you how long they will expire:
  function setCookie(name, cvalue, expiryDays) {
     var day = new Date();
     day.setTime(day.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
@@ -461,70 +461,59 @@ var inputs = [
     {id:"username", cookieName: "userId"},
 ];
 
+// Prefill fields and attach save listeners
 inputs.forEach(function (input) {
     var inputElement = document.getElementById(input.id);
-
-    // Prefill cookie input fields
     var cookieValue = getCookie(input.cookieName);
     if (cookieValue !== "") {
         inputElement.value = cookieValue;
     }
 
-    // Set a cookie when the input field changes
     inputElement.addEventListener("input", function () {
-        setCookie(input.cookieName, inputElement.value, 30);
+        if (document.getElementById("remember-me").checked) {  
+            setCookie(input.cookieName, inputElement.value, 2); 
+        }
     });
 });
 
-//Greet the user their name and message if cookie is set
+// Welcome message
 var firstName = getCookie("firstName");
 if (firstName !== "") {
-    document.getElementById("welcome1").innerHTML = "Welcome back, " + firstName + "!<br>";
+    document.getElementById("welcome1").innerHTML = "Welcome back, " + firstName + "!";
     document.getElementById("welcome2").innerHTML =
-        "<a href='#' id='new-user'>Not " + firstName + "? Click here to start a new form.</a>";
+        "<a href='#' id='new-user'>Not " + firstName + "? Click here to start as a new user.</a>";
 
-    document.getElementById("new-user").addEventListener("click", function () {
-        input.forEach(function (input) {
+    document.getElementById("new-user").addEventListener("click", function (e) {
+        e.preventDefault();
+        inputs.forEach(function (input) {  
             setCookie(input.cookieName, "", -1);
         });
+        localStorage.clear();
         location.reload();
     });
+} else {
+    document.getElementById("welcome1").innerHTML = "Welcome, new user!";
 }
 
-//Toggles cookie storage based on the "Remember Me" Checkbox State
+// Remember Me toggle
 document.getElementById("remember-me").addEventListener("change", function () {
-    const rememberMe = this.checked;
-
-    if (!rememberMe) {
-        // If "Remember Me" is unchecked, delete cookies
+    if (!this.checked) {
         deleteAllCookies();
-        console.log("All cookies deleted because 'Remember Me' is unchecked.");
+        localStorage.clear();
     } else {
-        // If "Remember Me" is checked or rechecked, save cookies
-        input.forEach(function (input) {
-            const inputElement = document.getElementById(input.id);
+        inputs.forEach(function (input) {  
+            var inputElement = document.getElementById(input.id);
             if (inputElement.value.trim() !== "") {
-                setCookie(input.cookieName, inputElement.value, 30);
+                setCookie(input.cookieName, inputElement.value, 2);
             }
         });
-        console.log("Cookies saved because 'Remember Me' is checked.");
     }
 });
 
-//removes all stored cookies by setting their expiration date in the past
-function deleteAllCookies() {
-    document.cookie.split(";").forEach(function (cookie) {
-        let eqPos = cookie.indexOf("=");
-        let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
-    });
-}
-
-//ensures all cookies are deleted if "Remember Me" is unchecked upon page load.
+// On page load: respect Remember Me state
 document.addEventListener("DOMContentLoaded", function () {
-    const rememberMe = document.getElementById("remember-me").checked;
-
-    if (!rememberMe) {
+    if (!document.getElementById("remember-me").checked) {
         deleteAllCookies();
+        localStorage.clear();
     }
-}); 
+});
