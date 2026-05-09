@@ -34,14 +34,16 @@
                 </tr>
             </table>
         </header>
+
 <hr> <!--Creates welcome message for user cookie-->
 <center>
     <span id="welcome1"></span>
     <span id="welcome2"></span>
 </center>
+
 <!--Insert iframe (looks like an Ad)-->
 <div class="iframe-container">
-    <iframe class="frame" src="https://www.felinemedcenter.com/" frameborder="0"></iframe>
+    <iframe class="frame" src="https://www.houstonhumane.org/" frameborder="0"></iframe>
 </div>
 
 <!--Form starts here-->
@@ -60,7 +62,7 @@
                     <td>
                         <input 
                         type="text" 
-                        name="fname" 
+                        name="First Name" 
                         id="fname"
                         minlength="1"
                         maxlength="30" 
@@ -80,7 +82,7 @@
                     <td>
                         <input 
                         type="text" 
-                        name="mname" 
+                        name="Middle Initial" 
                         id="mname"
                         minlength="0"
                         maxlength="1" 
@@ -98,7 +100,7 @@
                     <td class="td1"><label for="lname">Last Name:</label></td>
                     <td>
                         <input type="text" 
-                        name="lname" 
+                        name="Last Name" 
                         id="lname"
                         minlength="1"
                         maxlength="30" 
@@ -121,7 +123,7 @@
                         <input
                         type="radio"
                         id="s1"
-                        name="psex"
+                        name="Sex"
                         value="Male"
                         />
                         Male
@@ -129,15 +131,15 @@
                         <input
                         type="radio"
                         id="s2"
-                        name="psex"
-                        value="Male"
+                        name="Sex"
+                        value="Female"
                         />
                         Female
 
                         <input
                         type="radio"
                         id="s3"
-                        name="psex"
+                        name="Sex"
                         value="other"
                         />
                         Other
@@ -145,7 +147,7 @@
                         <input  
                         type="radio"  
                         id="s4"  
-                        name="psex"  
+                        name="Sex"  
                         value="I prefer not to say" 
                         />  
                         I prefer not to say 
@@ -160,7 +162,7 @@
                         <input
                         type="date"
                         id="dob"
-                        name="dob"
+                        name="Date of Birth"
                         onblur="validateDob()"
                         required
                         />
@@ -176,7 +178,7 @@
                         type="password"
                         minlength="11"
                         maxlength="11"
-                        name="ssn"
+                        name="Social Security Number"
                         id="ssn"
                         required
                         title="Numbers Only"
@@ -202,7 +204,7 @@
                     <td class="td1"><label for="address1">Address:</label></td>
                     <td>
                         <input type="text" 
-                        name="address1" 
+                        name="Address 1" 
                         id="address1" 
                         minlength="2"
                         maxlength="30"
@@ -221,7 +223,7 @@
                     <td>
                         <input
                         type="text" 
-                        name="address2" 
+                        name="Address 2" 
                         id="address2" 
                         minlength="2"
                         maxlength="30" 
@@ -236,13 +238,13 @@
                     <td>
                         <input 
                         type="text" 
-                        name="city" 
+                        name="City" 
                         id="city" 
                         minlength="1"
                         maxlength="30"
                         title="Enter your city" 
                         required 
-                        placeholder="What ever city you want it to show"
+                        placeholder="Enter your city"
                         onblur="validateCity()"
                         />
                         <br>
@@ -317,7 +319,7 @@
                         <td>
                             <input 
                             type="text" 
-                            name="zcode" 
+                            name="Zip Code" 
                             id="zcode" 
                             maxlength="10" 
                             pattern="[0-9]{5}"
@@ -335,7 +337,7 @@
                     <td class="td1"><label for="email">Email Address:</label></td>
                         <td>
                             <input type="text" 
-                            name="email" 
+                            name="Email Address:" 
                             id="email"
                             maxlength="30"
                             required
@@ -353,7 +355,7 @@
                     <td class="td1"><label for="phonenum">Phone Number:</label></td>
                         <td>
                             <input type="text" 
-                            name="phonenum" 
+                            name="Phone Number:" 
                             id="phonenum" 
                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                             required
@@ -384,14 +386,14 @@
                         <input
                         type="radio" 
                         id="v1" 
-                        name="vacc" 
+                        name="Vaccinated?" 
                         value="Yes"
                         />
                         Yes
                         <input 
                         type="radio" 
                         id="v2" 
-                        name="vacc" 
+                        name="Vaccinated?" 
                         value="No"
                         />
                         No
@@ -404,7 +406,7 @@
                         <input 
                         type="radio" 
                         id="i1" 
-                        name="insur" 
+                        name="Insurance?" 
                         value="Yes"
                         /> 
                         Yes
@@ -412,7 +414,7 @@
                         <input 
                         type="radio" 
                         id="i2" 
-                        name="insur" 
+                        name="Insurance?" 
                         value="No"
                         /> 
                         No
@@ -451,7 +453,7 @@
                         cols="50"
                         maxlength="500"
                         id="notes"
-                        name="notes"
+                        name="Notes"
                         title="Please write a description on the Symptoms your experiencing..."
                         placeholder="(Please explain)"
                         ></textarea>
@@ -465,7 +467,7 @@
                     <td>
                         <input
                         type="range"
-                        name="range"
+                        name="Health Range"
                         id="range"
                         min="0"
                         max="10"
@@ -489,13 +491,13 @@
                     <td>
                         <input
                         type="text"
-                        name="username"
+                        name="Username"
                         id="username"
                         minlength="5"
                         maxlength="20"
                         required
                         title="Username must contain at least 5 characters, and cannot start with a number"
-                        placeholder="whatever you want"
+                        placeholder="Enter your desired username"
                         onblur="validateUsername()"
                         />
                         <br>
@@ -508,7 +510,7 @@
                     <td>
                         <input
                         type="password"
-                        name="pass"
+                        name="Password"
                         id="pass"
                         minlength="10"
                         maxlength="30"
@@ -529,7 +531,7 @@
                     <td>
                         <input
                         type="password"
-                        name="c_pass"
+                        name="Confirm Password"
                         id="c_pass"
                         minlength="10"
                         maxlength="30"
@@ -555,7 +557,7 @@
                         <input
                             type="checkbox"
                             id="remember-me"
-                            name="remember-me"
+                            name="Remember Me?"
                             checked
                         />
                     </td>
@@ -597,7 +599,7 @@
 </form>
 
 <!--Footer goes here-->
-<iframe src="footer.html" width="100% Height="100px" title="footer"></iframe>
+<iframe src="footer.html" width="100%" height="100px" title="footer"></iframe>
 <script src="hw4.js"></script> 
 
 <!--creates alert box when requirements not met--> 
