@@ -25,7 +25,7 @@ function validateFname() {
     var namePattern = /^[a-zA-Z'-]+$/;
     // checks if first name field is empty
     if (fname == "") {
-        document.getElementById("fname-error").innerHTML = "First name field cannot be empty"
+        document.getElementById("fname-error").innerHTML = "First name cannot be empty."
         return false;
     } else if (fname != "") {
         if (!fname.match(namePattern)) { //checks if first name matches the pattern
@@ -425,7 +425,7 @@ function validateEverything() {
      }
  }
 
- //when the cookies expire, this tells you how long they will expire:
+ //when the cookies expires, this tell you how long it will expire:
  function setCookie(name, cvalue, expiryDays) {
     var day = new Date();
     day.setTime(day.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
@@ -472,6 +472,7 @@ inputs.forEach(function (input) {
     inputElement.addEventListener("input", function () {
         if (document.getElementById("remember-me").checked) {  
             setCookie(input.cookieName, inputElement.value, 2); 
+
         }
     });
 });
