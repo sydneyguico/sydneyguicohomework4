@@ -425,6 +425,16 @@ function validateEverything() {
      }
  }
 
+ // Fetch API - loads states from external file
+fetch('states.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('state').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error loading states:', error);
+    });
+
  //when the cookies expires, this tell you how long it will expire:
  function setCookie(name, cvalue, expiryDays) {
     var day = new Date();
@@ -452,7 +462,6 @@ var inputs = [
     {id:"mname", cookieName: "middleInitial"},
     {id:"lname", cookieName: "lastName"},
     {id:"dob", cookieName: "dateOfBirth"},
-    {id:"ssn", cookieName: "socialSecurityNumber"},
     {id:"address1", cookieName: "address1"},
     {id:"city", cookieName: "city"},
     {id:"zcode", cookieName: "zipCode"},
@@ -473,6 +482,24 @@ inputs.forEach(function (input) {
         if (document.getElementById("remember-me").checked) {  
             setCookie(input.cookieName, inputElement.value, 2); 
 
+        }
+    });
+});
+
+// Load from localStorage on page load
+inputs.forEach(function (input) {
+    var saved = localStorage.getItem(input.id);
+    if (saved) {
+        document.getElementById(input.id).value = saved;
+    }
+});
+
+// Save to localStorage when user leaves each field
+inputs.forEach(function (input) {
+    var inputElement = document.getElementById(input.id);
+    inputElement.addEventListener("blur", function () {
+        if (document.getElementById("remember-me").checked) {
+            localStorage.setItem(input.id, inputElement.value);
         }
     });
 });
