@@ -66,6 +66,12 @@ th {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#mname {
+    width: 28px;
+    text-align: center;
+    padding: 2px;
+}
+
 footer {
     position: flex;
     bottom: 0;
