@@ -57,10 +57,16 @@
                 <!--patient's information section of form starts here-->
 
                 <!--Patient's name F M L-->
-                <tr>
-                    <td class="td1"><label for="fname">First Name:</label></td>
-                    <td>
-                        <input 
+<tr>
+    <td class="td1">
+        <label for="fname">First,</label>
+        <label for="mname">MI,</label>
+        <label for="lname">Last:</label>
+    </td>
+    <td>
+        <div style="display: flex; align-items: flex-start; gap: 4px;">
+            <div>
+                <input 
                         type="text" 
                         name="First Name" 
                         id="fname"
@@ -74,13 +80,10 @@
                         />
                         <br>
                         <span class="error" id="fname-error"></span>
-                    </td>
-                </tr>
+            </div>
 
-                <tr>
-                    <td class="td1"><label for="mname">Middle Initial:</label></td>
-                    <td>
-                        <input 
+            <div>
+               <input 
                         type="text" 
                         name="Middle Initial" 
                         id="mname"
@@ -93,13 +96,10 @@
                         />
                         <br>
                         <span class="error"  id="mname-error"></span>
-                    </td>
-                </tr>
+            </div>
 
-                <tr>
-                    <td class="td1"><label for="lname">Last Name:</label></td>
-                    <td>
-                        <input type="text" 
+            <div>
+                <input type="text" 
                         name="Last Name" 
                         id="lname"
                         minlength="1"
@@ -112,8 +112,10 @@
                         />
                         <br>
                         <span class="error" id="lname-error"></span>
-                    </td>
-                </tr>
+            </div>
+        </div>
+    </td>
+</tr>
 
                 <!--Gender or sex-->
 
@@ -151,6 +153,7 @@
                         value="I prefer not to say" 
                         />  
                         I prefer not to say 
+
                     </td>
                 </tr>
 
@@ -256,8 +259,15 @@
                 <tr>
                     <td class="td1"><label for="state">State:</label></td>
                         <td>
-                            <select>
-                                <option selected disabled>Please Select One</option>
+                            <select 
+                            type="select-one"
+                            required 
+                            name="State" 
+                            id="state" 
+                            title="Please select your state"
+                            placeholder="Please select your state">
+                                <option  
+                                selected disabled>Please Select One</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -336,7 +346,8 @@
                 <tr>
                     <td class="td1"><label for="email">Email Address:</label></td>
                         <td>
-                            <input type="text" 
+                            <input 
+                            type="email" 
                             name="Email Address:" 
                             id="email"
                             maxlength="30"
@@ -358,7 +369,6 @@
                             name="Phone Number:" 
                             id="phonenum" 
                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                            required
                             maxlength="30"
                             title="Please enter your phone number" 
                             required 
@@ -451,11 +461,13 @@
                         <textarea
                         rows="4"
                         cols="50"
+                        minlength="3"
                         maxlength="500"
                         id="notes"
                         name="Notes"
-                        title="Please write a description on the Symptoms your experiencing..."
-                        placeholder="(Please explain)"
+                        title="Reason for Visit"
+                        required
+                        placeholder="Please write a description on the symptoms your experiencing..."
                         ></textarea>
                         <span id="descirption_text"></span>
                     </td>
@@ -512,7 +524,7 @@
                         type="password"
                         name="Password"
                         id="pass"
-                        minlength="10"
+                        minlength="7"
                         maxlength="30"
                         required
                         title="Password must contain at least 10 characters, one uppercase letter, one number, one lowercase letter, and one special character"
