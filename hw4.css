@@ -73,11 +73,14 @@ th {
 }
 
 footer {
-    position: flex;
+    position: fixed;
     bottom: 0;
     width: 100%;
     background-color: rgb(231, 171, 186);
-    height: 3.0 rem;
+    height: 118px;
+    padding-top: 5px;
+    padding-bottom: 10px 0;        /* adds breathing room top & bottom */
+    box-sizing: border-box; /* ensures padding doesn't overflow width */
 }
 
 #footer {
